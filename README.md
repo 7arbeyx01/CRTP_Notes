@@ -1,0 +1,1 @@
+# CRTP_Notes
