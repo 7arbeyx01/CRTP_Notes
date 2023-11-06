@@ -32,4 +32,24 @@ It is a method used for executing PowerShell commands or scripts in a way that m
  > 5. Flexibility:\
       - Compiler: Compiled code is generally less flexible because it is already translated into machine code or an intermediate form. Modifications require changes to the source code and recompilation.\
       - Interpreter: Interpreted code is more flexible, as it can be modified and executed interactively without the need for a separate compilation step.
-- 
+- What is ```COM```?\
+COM is a technology that allows different software components to communicate with each other on Windows systems. It's particularly useful for interacting with various system and application components, especially in older Windows environments.
+
+- what is ```iwr```?
+is an alias for the Invoke-WebRequest cmdlet. This cmdlet is used to send HTTP and HTTPS requests to web servers and retrieve data from websites. It is particularly useful for tasks like downloading files from the internet, interacting with RESTful APIs, and scraping web content.
+- What is ```ADSI```?\
+ADSI stands for "Active Directory Service Interfaces." It is a set of COM (Component Object Model) interfaces and objects provided by Microsoft for interacting with various directory services, including Microsoft Active Directory and Lightweight Directory Access Protocol (LDAP) directories. ADSI provides a uniform and consistent way to manage and manipulate directory services in Windows environments.
+- Who can Interact with AD using PowerShell?
+  - ADSI
+  - .NET Classes ```System.DirectoriesServices.ActiveDirectory```
+  - Native Executable
+  - WMI using PowerShell
+  - ActiveDirectory module
+> .NET is a free, open-source, cross-platform software framework developed by Microsoft. It provides a rich set of tools and libraries for building and running various types of applications, including desktop, web, mobile, cloud, gaming, and IoT (Internet of Things) applications. .NET is designed to be a versatile and unified platform that allows developers to create software for a wide range of devices and operating systems.
+- PowerShell detection? 
+  - System wide transcription
+  - Script Block logging
+  - AntiMalware Scan Interface (AMSI)
+  - Constrained Language Mode (CLM) Integrated with Applocker and WDAC (Device Guard)
+
+
