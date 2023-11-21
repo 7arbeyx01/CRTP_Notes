@@ -234,6 +234,27 @@ user or group within the specified domain.
   - Group policy preferences like startup/shutdown/log-on/logoff scripts settings
   - Software installation<br>
 - GPO can be abused for various attacks like privesc, backdoors, persistence etc.
+> u can enumrate just list of group policies and where it apply <br>
+> but u can't enumrate what exact settings that apply on the remote macine <br>
+> Restricted Groups: a domin group member in local groups.
+```
+Get GPO(s) which use Restricted Groups or groups.xml for interesting users
+Get-DomainGPOLocalGroup
+```
+```
+Group Policy Object (GPO): Restricted Groups settings are configured through Group Policy Objects (GPOs). GPOs define a set
+of policies and security settings that can be applied to user and computer objects within an Active Directory domain.
+
+Local Groups: With Restricted Groups, administrators can specify which users or groups should be members of certain local groups
+on computers. These local groups include built-in groups like Administrators, Remote Desktop Users, etc.
+
+Group Membership Enforcement: When the GPO is applied to computers, the specified group memberships are enforced. If a computer's
+local group membership does not match the settings defined in the GPO, the system will automatically adjust the memberships
+during the next Group Policy update.
+
+Security Implications: The use of Restricted Groups is crucial for maintaining a secure and consistent environment. For example,
+it helps ensure that only authorized users have administrative privileges on computers.
+```
 
 ***Domain Enumeration - ACL***<br>
 - Enables control on the ability of a process to access objects and other resources in active directory based on:
