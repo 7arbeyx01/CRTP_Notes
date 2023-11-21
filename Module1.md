@@ -271,6 +271,7 @@ on an object?
   - SACL – Logs success and failure audit messages when an object is accessed.
 - ACLs are vital to security architecture of AD.
 
+> for DACL BloodHound is the best choice.<br>
 ![image](https://github.com/7arbeyx01/CRTP_Notes/assets/18347638/29affaa3-7287-4e07-afe5-6e456a600054)
 
 > ***to understand Security Identifiers***<br>
