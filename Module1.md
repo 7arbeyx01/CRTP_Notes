@@ -258,6 +258,30 @@ during the next Group Policy update.
 Security Implications: The use of Restricted Groups is crucial for maintaining a secure and consistent environment. For example,
 it helps ensure that only authorized users have administrative privileges on computers.
 ```
+```
+ACL, DACL, and SACL are terms related to access control in the context of security and permissions in computer systems,
+particularly in the Microsoft Windows operating system.
+Here's a brief overview of each:
+1-ACL (Access Control List):
+-An ACL is a list of permissions associated with an obiect (such as a file, folder, or registry key) that specifies which users
+or systemprocesses are granted access and what operations are allowed or denied.
+-ACLs are used to control access to resources by specifying the permissions associated with each user or group.
+2-DACL (Discretionary Access Control List):
+-DACL is a type of ACL that controls access to an object based on the identity of the user or group attempting to access it.
+-It is considered discretionary because the owner of the object (or someone with the appropriate privileges) can modify the DACL
+to control access at their discretion.
+3-SACL (System Access Control List):
+-SACL is another type of ACL that controls auditing of object access.
+-It is used to log attempts to access an object, helping administrators monitor and audit security events.
+-SACLs are often used to track specific types of access, such as read, write, or delete operations, and can be used to 
+generate security audit events.
+In summary:
+-ACL is a general term for a list of permissions associated with an object.
+-DACL is a specific tpe of ACL that focuses on discretionary access control, determining who can access an object.
+-SACL is a specific type of ACL that focuses on system access control, determining what types of access should 
+be audited for an obiect.
+```
+![image](https://github.com/7arbeyx01/CRTP_Notes/assets/18347638/6c18e37f-12cf-4766-a5c0-4fe3e2bd3d23)
 
 ***Domain Enumeration - ACL***<br>
 - Enables control on the ability of a process to access objects and other resources in active directory based on:
