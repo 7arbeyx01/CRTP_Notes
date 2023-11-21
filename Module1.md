@@ -122,18 +122,42 @@ We can always load scripts in memory and avoid detection using AMSI bypass.\
 • For full obfuscation of PowerShell scripts, see Invoke-Obfuscation\
 (https://github.com/danielbohannon/Invoke-Obfuscation).
 
-• Steps to avoid signature based detection are pretty simple:
+***Steps to avoid signature based detection are pretty simple:***
 1) Scan using AMSITrigger
 2) Modify the detected code snippet
 3) Rescan using AMSITrigger
-4) Repeat the steps 2 & 3 till we get a result as “AMSI_RESULT_NOT_DETECTED” or
-“Blank”
+4) Repeat the steps 2 & 3 till we get a result as “AMSI_RESULT_NOT_DETECTED” or “Blank”
 
-***Bypassing AV Signatures for PowerShell - Invoke-Mimikatz***\
+***Bypassing AV Signatures for PowerShell - Invoke-Mimikatz***
+
+• Invoke-Mimikatz is THE most heavily signature PowerShell script!\
+• We must rename it before scanning with AmsiTrigger or we get an access denied.
+
 There are multiple detections. We need to make the following changes:
 1) Remove the comments.
 2) Modify each use of "DumpCreds".
-3) Modify the variable names of the Win32 API calls that are detected.
+3) Modify the variable names of the Win32 API calls that are detected.\
+ ```"VirtualProtect", WrtieProcessMemroy" and "CreateRemoteThread"```  
 4) Reverse the strings that are detected and the Mimikatz Compressed
 DLL string.
+
+***Domain Enumeration***
+For enumeration we can use the following tools\
+
+− The ActiveDirectory PowerShell module (MS signed and works even in PowerShell CLM)\
+https://docs.microsoft.com/en-us/powershell/module/addsadministration/?view=win10-ps
+https://github.com/samratashok/ADModule
+Import-Module C:\AD\Tools\ADModule-master\Microsoft.ActiveDirectory.Management.dll\
+Import-Module C:\AD\Tools\ADModule-master\ActiveDirectory\ActiveDirectory.psd1\
+
+− BloodHound (C# and PowerShell Collectors)\
+https://github.com/BloodHoundAD/BloodHound
+
+− PowerView (PowerShell)\
+https://github.com/ZeroDayLab/PowerSploit/blob/master/Recon/PowerView.ps1
+. C:\AD\Tools\PowerView.ps1\
+
+− SharpView (C#) - Doesn't support filtering using Pipeline\
+https://github.com/tevora-threat/SharpView/
+
 
