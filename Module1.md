@@ -317,3 +317,8 @@ forests which allows users of one domain or forest to access resources in the ot
 - Cannot be extended to a third forest (no implicit trust).
 - Can be one-way or two-way and transitive or nontransitive.
 ![image](https://github.com/7arbeyx01/CRTP_Notes/assets/18347638/d081a147-13ab-476c-baed-8f88992b4819)
+
+>Note:-<br>
+>If TrustAtterbutes is WITHIN_FOREST thats mean internal trust<br>
+>&<br>
+>if TrustAtterbutes is FILTER_SIDS thats mean external trust<br>
