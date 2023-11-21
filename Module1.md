@@ -163,6 +163,8 @@ https://github.com/ZeroDayLab/PowerSploit/blob/master/Recon/PowerView.ps1<br>
 − SharpView (C#) - Doesn't support filtering using Pipeline<br>
 https://github.com/tevora-threat/SharpView/<br>
 
+> Very important to check how many times user is signin to know if u enumrate honeybot or real environment
+> because normal user is signin many times but the honeybot users didn't because it's a not real users.
 ***SID vs RID***
 ```
 Security Identifier (SID):
