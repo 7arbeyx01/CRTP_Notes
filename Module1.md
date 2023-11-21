@@ -74,8 +74,18 @@ Windows Defender Application Control (WDAC) - Device Guard:
 
 - Role: WDAC, also known as Device Guard, is a set of features in Windows that controls which applications and scripts are allowed to run by using code integrity policies.
 - Integration: CLM works in conjunction with WDAC to provide additional security. WDAC can enforce code integrity policies that specify which scripts and executables are allowed to run based on cryptographic signatures or other criteria. When WDAC is used in combination with CLM, it adds an extra layer of protection against unauthorized or malicious code execution.
-By integrating CLM with AppLocker and WDAC, administrators can implement a multi-layered security approach for PowerShell scripts:
+By integrating CLM with AppLocker and WDAC, administrators can implement a multi-layered security approach for PowerShell scripts.
 
 CLM: Restricts the language elements within PowerShell scripts.
 AppLocker: Controls which scripts and applications are allowed to run based on defined policies.
 WDAC (Device Guard): Enforces code integrity policies to ensure that only trusted and authorized scripts and executables are executed.
+
+
+***Execution Policy***
+>It is NOT a security measure, it is present to prevent user from accidently executing scripts.
+
+Several ways to bypass:-
+```powershell –ExecutionPolicy bypass
+powershell –c <cmd>
+powershell –encodedcommand
+$env:PSExecutionPolicyPreference="bypass"
