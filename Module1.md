@@ -236,7 +236,8 @@ user or group within the specified domain.
 - GPO can be abused for various attacks like privesc, backdoors, persistence etc.
 > u can enumrate just list of group policies and where it apply <br>
 > but u can't enumrate what exact settings that apply on the remote macine <br>
-> Restricted Groups: a domin group member in local groups.
+> Restricted Groups: a domin group member in local groups, so in case of the local admin is a member of this group
+> and you compormised any user there thats mean u have admin permission on this machine.
 ```
 Get GPO(s) which use Restricted Groups or groups.xml for interesting users
 Get-DomainGPOLocalGroup
@@ -272,3 +273,5 @@ on an object?
 
 ![image](https://github.com/7arbeyx01/CRTP_Notes/assets/18347638/29affaa3-7287-4e07-afe5-6e456a600054)
 
+> ***to understand Security Identifiers***<br>
+https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/understand-security-identifiers
