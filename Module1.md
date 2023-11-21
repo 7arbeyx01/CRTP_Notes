@@ -105,3 +105,19 @@ logging\
 (DLL) that consists of functions that receive messages from, and send
 messages to, the CLR by using the profiling API. The profiler DLL is
 loaded by the CLR at run time."
+
+***Using Invisi-Shell***\
+• With admin privileges:\
+```RunWithPathAsAdmin.bat```\
+• With non-admin privileges:\
+```RunWithRegistryNonAdmin.bat```\
+• Type exit from the new PowerShell session to complete the clean-up.
+
+***Bypassing AV Signatures for PowerShell***\
+We can always load scripts in memory and avoid detection using AMSI bypass.\
+• How do we bypass signature based detection of on-disk PowerShell scripts by Windows Defender?\
+• We can use the AMSITrigger (https://github.com/RythmStick/AMSITrigger) tool to identify the exact part of a script that is detected.\
+• Simply provide path to the script file to scan it:\
+```AmsiTrigger_x64.exe -i C:\AD\Tools\Invoke-PowerShellTcp_Detected.ps1```\
+• For full obfuscation of PowerShell scripts, see Invoke-Obfuscation\
+(https://github.com/danielbohannon/Invoke-Obfuscation).
