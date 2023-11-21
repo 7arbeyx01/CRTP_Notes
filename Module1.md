@@ -163,3 +163,64 @@ https://github.com/ZeroDayLab/PowerSploit/blob/master/Recon/PowerView.ps1<br>
 − SharpView (C#) - Doesn't support filtering using Pipeline<br>
 https://github.com/tevora-threat/SharpView/<br>
 
+```
+In Active Directory (AD), Security Identifiers (SIDs) are used to uniquely identify security principals
+(such as users, groups, and computers) within a domain or forest. Each SID is composed of a domain identifier
+(commonly referred to as the domain SID) and a relative identifier (RID) that is unique within the domain.
+
+For members of a group, including users in AD, the RID portion of the SID is significant. The RID identifies the
+user or group within the domain. The RIDs for users are within certain ranges defined by Microsoft. Here are the
+common SID ranges for various types of security principals:
+
+User Accounts:
+
+User RIDs typically fall within the range of 1000 to 2147483647 (0x3FFFFFFF).
+Group Accounts:
+
+Security groups: 1100 to 2147483647 (0x3FFFFFFF)
+Distribution groups: 2000 to 2147483647 (0x3FFFFFFF)
+Well-Known SIDs:
+
+Enterprise Admins: 519
+Domain Admins: 512
+Domain Users: 513
+Domain Guests: 514
+Domain Computers: 515
+Built-in Administrators: 500
+Computer Accounts:
+
+RIDs for computer accounts start from 1000.
+Built-in Accounts:
+
+Administrator: 500
+Guest: 501
+krbtgt (Key Distribution Center Service Account): 502
+etc.
+It's important to note that these RID ranges are defined by Microsoft and are considered well-known. The RIDs, when combined
+with the domain SID, create a globally unique identifier for each security principal in the domain.
+
+For example, if you see a SID like S-1-5-21-3623811015-3361044348-30300820-1013, the "1013" portion is the RID for a specific
+user or group within the specified domain.
+```
+```
+Security Identifier (SID):
+
+Definition: A SID is a unique alphanumeric identifier that uniquely identifies a security principal (user, group, or computer)
+ in a Windows domain or forest.
+Structure: SIDs are structured as follows: S-1-5-21-<domain>-<relative identifier>.
+Components:
+S: Identifies the string as a SID.
+1-5-21: The identifier authority for Windows.
+<domain>: The domain identifier, unique to each domain or forest.
+<relative identifier>: The RID, which uniquely identifies the security principal within the domain.
+Relative Identifier (RID):
+
+Definition: The RID is a portion of the SID that uniquely identifies a security principal within a domain. It is a numeric value.
+Placement: The RID is the last portion of the SID. For example, in the SID S-1-5-21-<domain>-<relative identifier>,
+the <relative identifier> is the RID.
+Uniqueness: The combination of the domain SID and RID results in a globally unique identifier for each security principal within
+the domain.
+Ranges: RIDs are assigned within certain ranges for specific types of security principals (users, groups, computers, etc.).
+In summary, the SID is the complete identifier for a security principal and consists of both the domain identifier and the RID.
+The RID, on the other hand, is a subset of the SID and represents the unique identifier for the security principal within its domain.
+```
