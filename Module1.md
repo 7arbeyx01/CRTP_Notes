@@ -275,3 +275,34 @@ on an object?
 
 > ***to understand Security Identifiers***<br>
 https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/understand-security-identifiers
+
+***Domain Enumeration - Trusts***
+- In an AD environment, trust is a relationship between two domains or
+forests which allows users of one domain or forest to access resources in the other domain or forest.
+-  Trust can be automatic (parent-child, same forest etc.) or established (forest, external).
+- Trusted Domain Objects (TDOs) represent the trust relationships in a domain.
+
+  **Trust Direction**
+- One-way trust – Unidirectional. Users in the trusted domain can access resources in the trusting domain but the reverse is not true.
+  ![image](https://github.com/7arbeyx01/CRTP_Notes/assets/18347638/3b48e169-3ff1-4287-abd3-e6dc45f9bf94)
+
+  **Trust Direction**
+- Two-way trust – Bi-directional. Users of both domains can access resources in the other domain.
+![image](https://github.com/7arbeyx01/CRTP_Notes/assets/18347638/733bf801-7287-456c-9535-b6e1da5dbb16)
+
+**Domain Enumeration - Trusts - Transitivity**
+- Transitive – Can be extended to establish trust relationships with other domains.<br>
+  - All the default intra-forest trust relationships (Treeroot, Parent-Child) between domains within a same forest are transitive two-way trusts.
+- Nontransitive – Cannot be extended to other domains in the forest. Can be two-way or oneway.<br>
+  - This is the default trust (called external trust) between two domains in different forests when forests do not have a trust relationship. 
+![image](https://github.com/7arbeyx01/CRTP_Notes/assets/18347638/6a0ba3fb-385d-4435-8c00-68d3d954d68b)
+
+**Default/Automatic Trusts**
+- Parent-child trust
+  - It is created automatically between the new domain and the domain that precedes it in the namespace hierarchy, whenever a new domain is added in a
+     tree. For example, dollarcorp.moneycorp.local is a child of moneycorp.local
+  - This trust is always two-way transitive.
+- Tree-root trust
+  - It is created automatically between whenever a new domain tree is added to a forest root.
+  - This trust is always two-way transitive.
+![image](https://github.com/7arbeyx01/CRTP_Notes/assets/18347638/f75cc0ec-47cd-4581-96e3-f7297da6b215)
