@@ -249,3 +249,5 @@ on an object?
   - SACL – Logs success and failure audit messages when an object is accessed.
 - ACLs are vital to security architecture of AD.
 
+![image](https://github.com/7arbeyx01/CRTP_Notes/assets/18347638/29affaa3-7287-4e07-afe5-6e456a600054)
+
