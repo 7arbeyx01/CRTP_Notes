@@ -48,8 +48,34 @@ ADSI stands for "Active Directory Service Interfaces." It is a set of COM (Compo
 > .NET is a free, open-source, cross-platform software framework developed by Microsoft. It provides a rich set of tools and libraries for building and running various types of applications, including desktop, web, mobile, cloud, gaming, and IoT (Internet of Things) applications. .NET is designed to be a versatile and unified platform that allows developers to create software for a wide range of devices and operating systems.
 - PowerShell detection? 
   - System wide transcription
-  - Script Block logging
+  - Script Block logging --> event id 4104
   - AntiMalware Scan Interface (AMSI)
   - Constrained Language Mode (CLM) Integrated with Applocker and WDAC (Device Guard)
 
+ what is AMSI?
+  - Integration with Scripting Engines: AMSI integrates with scripting engines like PowerShell, VBScript, and JScript. These scripting engines are commonly used by attackers to run malicious code.
+  - Content Scanning: When a script or code is executed, the content is passed through the AMSI interface. AMSI scans the content for suspicious or malicious patterns using signatures, heuristics, and other detection methods.
+  - Real-time Protection: AMSI provides real-time protection by scanning scripts and code at runtime, allowing security products to detect and block malicious activities as they occur.
 
+  - Notifications to Security Products: If malicious content is detected, AMSI notifies the registered antivirus or security product, which can then take appropriate actions, such as blocking the execution of the script or code.
+  -  Support for Third-Party Security Products: AMSI is not limited to Microsoft's own security products. Third-party antivirus and security software can also leverage the AMSI interface to enhance their ability to detect and prevent malware.
+
+what is the mean of Constrained Language Mode (CLM) Integrated with Applocker and WDAC (Device Guard) ?\
+Constrained Language Mode (CLM) is a feature in PowerShell designed to restrict the language elements that can be used in a script. This can help mitigate security risks associated with malicious or unintentional use of certain PowerShell features. When CLM is enforced, it limits the use of language elements that could be abused for malicious purposes.
+
+AppLocker and Windows Defender Application Control (WDAC), formerly known as Device Guard, are additional security features in Windows that work in conjunction with PowerShell's CLM to enhance overall system security.
+
+AppLocker:
+
+- Role: AppLocker is a security feature that helps administrators control which applications and scripts users can run on a Windows system.
+- Integration: When CLM is combined with AppLocker, PowerShell scripts can be further restricted based on the rules defined in AppLocker policies. AppLocker policies allow administrators to specify which scripts or applications are allowed to run, preventing the execution of unauthorized or potentially malicious scripts.
+
+Windows Defender Application Control (WDAC) - Device Guard:
+
+- Role: WDAC, also known as Device Guard, is a set of features in Windows that controls which applications and scripts are allowed to run by using code integrity policies.
+- Integration: CLM works in conjunction with WDAC to provide additional security. WDAC can enforce code integrity policies that specify which scripts and executables are allowed to run based on cryptographic signatures or other criteria. When WDAC is used in combination with CLM, it adds an extra layer of protection against unauthorized or malicious code execution.
+By integrating CLM with AppLocker and WDAC, administrators can implement a multi-layered security approach for PowerShell scripts:
+
+CLM: Restricts the language elements within PowerShell scripts.
+AppLocker: Controls which scripts and applications are allowed to run based on defined policies.
+WDAC (Device Guard): Enforces code integrity policies to ensure that only trusted and authorized scripts and executables are executed.
