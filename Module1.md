@@ -226,3 +226,26 @@ with the domain SID, create a globally unique identifier for each security princ
 For example, if you see a SID like S-1-5-21-3623811015-3361044348-30300820-1013, the "1013" portion is the RID for a specific
 user or group within the specified domain.
 ```
+***Domain Enumeration - GPO***<br>
+- Group Policy provides the ability to manage configuration and changes easily and centrally in AD.<br>
+- Allows configuration of 
+  - Security settings
+  - Registry-based policy settings
+  - Group policy preferences like startup/shutdown/log-on/logoff scripts settings
+  - Software installation<br>
+- GPO can be abused for various attacks like privesc, backdoors, persistence etc.
+
+***Domain Enumeration - ACL***<br>
+- Enables control on the ability of a process to access objects and other resources in active directory based on:
+  - Access Tokens (security context of a process – identity and privs of user)
+  - Security Descriptors (SID of the owner, Discretionary ACL (DACL) and System ACL ((SACL))<br>
+
+***Access Control List (ACL)***<br>
+- It is a list of Access Control Entries (ACE) – ACE corresponds to individual
+permission or audits access. Who has permission and what can be done
+on an object?
+- Two types:
+  - DACL – Defines the permissions trustees (a user or group) have on an object.
+  - SACL – Logs success and failure audit messages when an object is accessed.
+- ACLs are vital to security architecture of AD.
+
