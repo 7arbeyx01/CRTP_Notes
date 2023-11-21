@@ -142,22 +142,24 @@ There are multiple detections. We need to make the following changes:
 DLL string.
 
 ***Domain Enumeration***
-For enumeration we can use the following tools\
+For enumeration we can use the following tools<br>
 
-− The ActiveDirectory PowerShell module (MS signed and works even in PowerShell CLM)\
-https://docs.microsoft.com/en-us/powershell/module/addsadministration/?view=win10-ps
-https://github.com/samratashok/ADModule
-Import-Module C:\AD\Tools\ADModule-master\Microsoft.ActiveDirectory.Management.dll\
-Import-Module C:\AD\Tools\ADModule-master\ActiveDirectory\ActiveDirectory.psd1\
+− The ActiveDirectory PowerShell module (MS signed and works even in PowerShell CLM)<br>
+https://docs.microsoft.com/en-us/powershell/module/addsadministration/?view=win10-ps<br>
+https://github.com/samratashok/ADModule<br>
+>He maintained it so there is no detection for it
 
-− BloodHound (C# and PowerShell Collectors)\
+Import-Module C:\AD\Tools\ADModule-master\Microsoft.ActiveDirectory.Management.dll<br>
+Import-Module C:\AD\Tools\ADModule-master\ActiveDirectory\ActiveDirectory.psd1<br>
+
+− BloodHound (C# and PowerShell Collectors)<br>
 https://github.com/BloodHoundAD/BloodHound
 
-− PowerView (PowerShell)\
-https://github.com/ZeroDayLab/PowerSploit/blob/master/Recon/PowerView.ps1
-. C:\AD\Tools\PowerView.ps1\
+− PowerView (PowerShell)<br>
+https://github.com/ZeroDayLab/PowerSploit/blob/master/Recon/PowerView.ps1<br>
+. C:\AD\Tools\PowerView.ps1<br>
+>PowerView is a powerful open-source PowerShell tool developed by Will Schroeder (@harmj0y) that is part of the PowerSploit project. PowerSploit is a collection of Microsoft PowerShell modules that can be used for penetration testing, red teaming, and offensive security operations. PowerView, in particular, focuses on Windows Active Directory (AD) enumeration, reconnaissance, and exploitation.<br>
 
-− SharpView (C#) - Doesn't support filtering using Pipeline\
-https://github.com/tevora-threat/SharpView/
-
+− SharpView (C#) - Doesn't support filtering using Pipeline<br>
+https://github.com/tevora-threat/SharpView/<br>
 
