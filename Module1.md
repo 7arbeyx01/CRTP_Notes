@@ -306,3 +306,14 @@ forests which allows users of one domain or forest to access resources in the ot
   - It is created automatically between whenever a new domain tree is added to a forest root.
   - This trust is always two-way transitive.
 ![image](https://github.com/7arbeyx01/CRTP_Notes/assets/18347638/f75cc0ec-47cd-4581-96e3-f7297da6b215)
+
+**External Trusts**
+- Between two domains in different forests when forests do not have a trust relationship.
+- Can be one-way or twoway and is nontransitive.
+![image](https://github.com/7arbeyx01/CRTP_Notes/assets/18347638/f52d592e-f884-488e-a46e-fdfe4cb6448a)
+
+**Forest Trusts**
+- Between forest root domain.
+- Cannot be extended to a third forest (no implicit trust).
+- Can be one-way or two-way and transitive or nontransitive.
+![image](https://github.com/7arbeyx01/CRTP_Notes/assets/18347638/d081a147-13ab-476c-baed-8f88992b4819)
