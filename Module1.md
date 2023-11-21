@@ -121,3 +121,19 @@ We can always load scripts in memory and avoid detection using AMSI bypass.\
 ```AmsiTrigger_x64.exe -i C:\AD\Tools\Invoke-PowerShellTcp_Detected.ps1```\
 • For full obfuscation of PowerShell scripts, see Invoke-Obfuscation\
 (https://github.com/danielbohannon/Invoke-Obfuscation).
+
+• Steps to avoid signature based detection are pretty simple:
+1) Scan using AMSITrigger
+2) Modify the detected code snippet
+3) Rescan using AMSITrigger
+4) Repeat the steps 2 & 3 till we get a result as “AMSI_RESULT_NOT_DETECTED” or
+“Blank”
+
+***Bypassing AV Signatures for PowerShell - Invoke-Mimikatz***\
+There are multiple detections. We need to make the following changes:
+1) Remove the comments.
+2) Modify each use of "DumpCreds".
+3) Modify the variable names of the Win32 API calls that are detected.
+4) Reverse the strings that are detected and the Mimikatz Compressed
+DLL string.
+
