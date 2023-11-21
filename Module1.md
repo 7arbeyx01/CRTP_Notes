@@ -186,6 +186,7 @@ Ranges: RIDs are assigned within certain ranges for specific types of security p
 In summary, the SID is the complete identifier for a security principal and consists of both the domain identifier and the RID.
 The RID, on the other hand, is a subset of the SID and represents the unique identifier for the security principal within its domain.
 ```
+***SID Ranges***
 ```
 In Active Directory (AD), Security Identifiers (SIDs) are used to uniquely identify security principals
 (such as users, groups, and computers) within a domain or forest. Each SID is composed of a domain identifier
