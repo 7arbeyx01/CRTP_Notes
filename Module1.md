@@ -85,7 +85,23 @@ WDAC (Device Guard): Enforces code integrity policies to ensure that only truste
 >It is NOT a security measure, it is present to prevent user from accidently executing scripts.
 
 Several ways to bypass:-
-```powershell –ExecutionPolicy bypass
+```
+powershell –ExecutionPolicy bypass
 powershell –c <cmd>
 powershell –encodedcommand
 $env:PSExecutionPolicyPreference="bypass"
+```
+> keep this statement on your mind\
+> • There are bypasses and then there are obfuscated bypasses!
+
+***Bypassing PowerShell Security***\
+• use Invisi-Shell (https://github.com/OmerYa/Invisi-Shell) for
+bypassing the security controls in PowerShell.\
+• The tool hooks the .NET assemblies
+(System.Management.Automation.dll and System.Core.dll) to bypass
+logging\
+• It uses a CLR Profiler API to perform the hook.\
+• "A common language runtime (CLR) profiler is a dynamic link library
+(DLL) that consists of functions that receive messages from, and send
+messages to, the CLR by using the profiling API. The profiler DLL is
+loaded by the CLR at run time."
