@@ -82,3 +82,32 @@ or<br>
 - The generated archive can be uploaded to the BloodHound application.
 - To avoid detections like ATA
 ```Invoke-BloodHound -CollectionMethod All -ExcludeDC```
+
+***Lateral Movement - PowerShell Remoting***
+- Think of PowerShell Remoting (PSRemoting) as psexec on steroids but much more silent and super fast!
+- PSRemoting uses Windows Remote Management (WinRM) which is Microsoft's implementation of WS-Management.
+- Enabled by default on Server 2012 onwards with a firewall exception.
+- Uses WinRM and listens by default on 5985 (HTTP) and 5986 (HTTPS).
+- It is the recommended way to manage Windows Core servers.
+- You may need to enable remoting (Enable-PSRemoting) on a Desktop Windows machine, Admin privs are required to do that.
+- The remoting process runs as a high integrity process. That is, you get an elevated shell.
+- One-to-One
+- PSSession
+  - Interactive
+  - Runs in a new process (wsmprovhost)
+  - Is Stateful
+- Useful cmdlets
+  - ```New-PSSession```
+  - ```Enter-PSSession```
+- One-to-Many
+- Also known as Fan-out remoting.
+- Non-interactive.
+- Executes commands parallely.
+- Useful cmdlets
+  - ```Invoke-Command```
+- Run commands and scripts on
+  - multiple remote computers,
+  - in disconnected sessions (v3)
+  - as background job and more.
+- The best thing in PowerShell for passing the hashes, using credentials and executing commands on multiple remote computers.
+- Use ```–Credential``` parameter to pass username/password.
