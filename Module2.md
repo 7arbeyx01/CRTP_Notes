@@ -70,6 +70,8 @@ more.
 > Note :- Auto Logon feature its store the username and password on the registery so anyone can read it.
 
 ***Domain Enumeration - BloodHound***
+> BloodHound have two part the collector 'sharphond .ps1' that running to check the all of AD and give u file u open it in the second part called GUI.<br>
+> The SharpHound toolset is specifically designed to collect data within an Active Directory <br>
 - Provides GUI for AD entities and relationships for the data collected by its ingestors.
 - Uses Graph Theory for providing the capability of mapping shortest path for interesting things like Domain Admins.
 https://github.com/BloodHoundAD/BloodHound
