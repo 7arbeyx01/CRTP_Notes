@@ -134,8 +134,26 @@ or<br>
 - Below doesn't need elevation.<br>
 ```Rubeus.exe asktgt /user:administrator /rc4:<ntlmhash>/ptt```
 - Below command needs elevation.<br>
-```Rubeus.exe asktgt /user:administrator/aes256:<aes256keys> /opsec/createnetonly:C:\Windows\System32\cmd.exe /show /ptt```
+```Rubeus.exe asktgt /user:administrator/aes256:<aes256keys> /opsec/createnetonly:C:\Windows\System32\cmd.exe /show /ptt```<br>
+***What is Rubeus.exe?***
+```
+It is known for its capability to interact with Kerberos tickets in Windows environments. The tool is often used to perform Kerberos
+ticket extraction, manipulation, and attacks against Kerberos authentication.
 
+- Ticket Extraction: Rubeus can be used to extract Kerberos tickets from memory, including Ticket Granting Ticket (TGT)
+and Ticket Granting Service (TGS) tickets.
+
+- Pass-the-Ticket (PtT) Attacks: Rubeus supports pass-the-ticket attacks, allowing an attacker to use stolen Kerberos tickets to
+authenticate to other services without knowing the user's password.
+
+- Ticket Renewal and Ticket Renewal Attacks: Rubeus can renew Kerberos tickets, and it also supports attacks related to ticket renewal,
+such as requesting and renewing TGTs.
+
+- Ticket Request: The tool can be used to request TGTs and TGS tickets for specific users or services.
+
+- Kerberoasting: Rubeus supports Kerberoasting attacks, which involve requesting service tickets for service accounts
+and then offline brute-forcing the ticket to obtain the service account's plaintext password
+```
 # Lateral Movement - DCSync
 - To extract credentials from the DC without code execution on it, we can use DCSync.
 - To use the DCSync feature for getting krbtgt hash execute the below command with DA privileges for us domain:<br>
