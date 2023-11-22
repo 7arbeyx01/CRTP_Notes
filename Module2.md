@@ -72,6 +72,7 @@ more.
 ***Domain Enumeration - BloodHound***
 > BloodHound have two part the collector 'sharphond .ps1' that running to check the all of AD and give u file u open it in the second part called GUI.<br>
 > The SharpHound toolset is specifically designed to collect data within an Active Directory <br>
+> GUI draw to you a graph from the file that collect by the collectors.<br>
 - Provides GUI for AD entities and relationships for the data collected by its ingestors.
 - Uses Graph Theory for providing the capability of mapping shortest path for interesting things like Domain Admins.
 https://github.com/BloodHoundAD/BloodHound
@@ -114,3 +115,29 @@ or<br>
   - as background job and more.
 - The best thing in PowerShell for passing the hashes, using credentials and executing commands on multiple remote computers.
 - Use ```–Credential``` parameter to pass username/password.
+
+***PowerShell Remoting - Tradecraft***
+- PowerShell remoting supports the system-wide transcripts and deep script block logging.
+- We can use winrs in place of PSRemoting to evade the logging (and still reap the benefit of 5985 allowed between hosts):
+```winrs -remote:server1 -u:server1\administrator -p:Pass@1234 hostname```<br>
+- We can also use winrm.vbs and COM objects of WSMan COM object -https://github.com/bohops/WSMan-WinRM
+
+***Lateral Movement - Invoke-Mimikatz***
+- Mimikatz can be used to dump credentials, tickets, and many more interesting attacks!
+- Invoke-Mimikatz, is a PowerShell port of Mimikatz. Using the code from ReflectivePEInjection, mimikatz is loaded reflectively into the memory.
+  All the functions of mimikatz could be used from this script.
+- The script needs administrative privileges for dumping credentials from local machine. Many attacks need specific privileges which are covered
+  while discussing that attack.
+
+***Lateral Movement - OverPass-The-Hash***
+- Over Pass the hash (OPTH) generate tokens from hashes or keys.
+- Below doesn't need elevation.<br>
+```Rubeus.exe asktgt /user:administrator /rc4:<ntlmhash>/ptt```
+- Below command needs elevation.<br>
+```Rubeus.exe asktgt /user:administrator/aes256:<aes256keys> /opsec/createnetonly:C:\Windows\System32\cmd.exe /show /ptt```
+
+***Lateral Movement - DCSync***
+- To extract credentials from the DC without code execution on it, we can use DCSync.
+- To use the DCSync feature for getting krbtgt hash execute the below command with DA privileges for us domain:<br>
+```Invoke-Mimikatz -Command '"lsadump::dcsync/user:us\krbtgt"'SafetyKatz.exe "lsadump::dcsync /user:us\krbtgt" "exit"```
+- By default, Domain Admins privileges are required to run DCSync.
