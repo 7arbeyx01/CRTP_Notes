@@ -28,8 +28,13 @@ We can use below tools for complete coverage<br>
 We have Three types of service issues:<br>
 1- Get services with unquoted paths and a space in their name.<br>
 ```Get-ServiceUnquoted -Verbose```<br>
+![image](https://github.com/7arbeyx01/CRTP_Notes/assets/18347638/1e52fa5c-f3f1-491a-805a-648657bc5d07)
+![image](https://github.com/7arbeyx01/CRTP_Notes/assets/18347638/4469bd8f-34e9-4cc4-aff4-fd92b504a01f)
+
 2- Get services where the current user can write to its binary path or change arguments to the binary<br>
 ```Get-ModifiableServiceFile -Verbose```<br>
+![image](https://github.com/7arbeyx01/CRTP_Notes/assets/18347638/e0c6334b-5ff6-4c59-8707-e3fdfd8213b6)
+
 3- Get the services whose configuration current user can modify.<br>
 ```Get-ModifiableService -Verbose```<br>
 
