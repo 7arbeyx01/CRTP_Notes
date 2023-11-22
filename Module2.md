@@ -12,6 +12,7 @@ or make spilke ☣️ Like the picture in the below <br>
   - Hunting for Local Admin access on other machines
   - Hunting for high privilege domain accounts (like a Domain Administrator)
 - Let's also look for Local Privilege Escalation.
+![image](https://github.com/7arbeyx01/CRTP_Notes/assets/18347638/5cbee3a5-a4ad-47b4-86d8-6298bccff44f)
 
 ***Privilege Escalation - Local***
 - Missing patches
