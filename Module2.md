@@ -20,10 +20,19 @@ or make spilke ☣️ Like the picture in the below <br>
 - Misconfigured Services
 - DLL Hijacking and more
 - NTLM Relaying a.k.a. Won't Fix
-
 We can use below tools for complete coverage<br>
 - PowerUp: https://github.com/PowerShellMafia/PowerSploit/tree/master/Privesc
 - Privesc: https://github.com/enjoiz/Privesc
+
+***Services Issues using PowerUp***<br>
+We have Three types of service issues:<br>
+1- Get services with unquoted paths and a space in their name.<br>
+```Get-ServiceUnquoted -Verbose```<br>
+2- Get services where the current user can write to its binary path or change arguments to the binary<br>
+```Get-ModifiableServiceFile -Verbose```<br>
+3- Get the services whose configuration current user can modify.<br>
+```Get-ModifiableService -Verbose```<br>
+
 
 ***Feature Abuse***
 - What we have been doing up to now (and will keep doing further in the class) is relying on features abuse.
@@ -50,3 +59,5 @@ build configuration. Add a build step, add "Execute Windows Batch Command" and e
 ```powershell –c <command>```
 - Again, you could download and execute scripts, run encoded scripts and
 more.
+
+> Note :- Auto Logon feature its store the username and password on the registery so anyone can read it.
