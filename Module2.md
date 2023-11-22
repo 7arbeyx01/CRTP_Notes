@@ -179,3 +179,7 @@ and then offline brute-forcing the ticket to obtain the service account's plaint
 - We can use DefenderCheck (https://github.com/matterpreter/DefenderCheck) to identify code and strings from a binary that Windows Defender may flag.
 - This helps us in deciding on modifying the source code and minimal obfuscation.
 
+>xcopy: is a command-line utility in Microsoft Windows used for copying files and directories from one location to another. The name "xcopy" stands for "extended copy," and it is an enhanced version of the standard copy command in Windows.<br>
+
+>If executable download another executable the Windows Defender can catch this behavior so we can avoid that by using port forwarding by netsh after $null variable.<br>
+>netsh is a command-line utility in Microsoft Windows that allows users to configure and display various network-related settings. The term "netsh" stands for "network shell," and it provides a scripting interface to configure, monitor, and troubleshoot network components.
