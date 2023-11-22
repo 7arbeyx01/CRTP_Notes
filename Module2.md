@@ -4,3 +4,49 @@ or use any kind make a your enumration is unique like 4672(S): Special privilege
 or make spilke ☣️ Like the picture in the below <br>
 ![image](https://github.com/7arbeyx01/CRTP_Notes/assets/18347638/46d17bd2-9ee7-467e-8473-217c829d3fa9)
 
+> U can list the session and logged on users on the machines if you enumrate windows server less than 2019 if u a membership of domain admin group, but u will leave event 4624 and 4634 on all machines.<br>
+> when u use paramter like check access on this case the request not send for all machines, it's just send to the high level machines like servers to check.<br>
+
+***Privilege Escalation***
+- In an AD environment, there are multiple scenarios which lead to privilege escalation. We had a look at the following
+  - Hunting for Local Admin access on other machines
+  - Hunting for high privilege domain accounts (like a Domain Administrator)
+- Let's also look for Local Privilege Escalation.
+
+***Privilege Escalation - Local***
+- Missing patches
+- Automated deployment and AutoLogon passwords in clear text
+- AlwaysInstallElevated (Any user can run MSI as SYSTEM)
+- Misconfigured Services
+- DLL Hijacking and more
+- NTLM Relaying a.k.a. Won't Fix
+
+We can use below tools for complete coverage<br>
+- PowerUp: https://github.com/PowerShellMafia/PowerSploit/tree/master/Privesc
+- Privesc: https://github.com/enjoiz/Privesc
+
+***Feature Abuse***
+- What we have been doing up to now (and will keep doing further in the class) is relying on features abuse.
+- Features abuse are awesome as there are seldom patches for them and they are not the focus of security teams!
+- One of my favorite features abuse is targeting enterprise applications which are not built keeping security in mind.
+- On Windows, many enterprise applications need either Administrative privileges or SYSTEM privileges making them a great avenue for privilege escalation.
+
+***Feature Abuse - Jenkins***
+- Jenkins is a widely used Continuous Integration tool.
+- There are many interesting aspects with Jenkins but for now we would limit our discussion to the ability of running system commands on Jenkins.
+- There is a Jenkins server running on dcorp-ci (172.16.3.11) on port 8080.
+- Apart from numerous plugins, there are two ways of executing commands on a Jenkins Master.
+- If you have Admin access (default installation before 2.x), go to ```http://<jenkins_server>/script```
+- In the script console, Groovy scripts could be executed.
+```
+def sout = new StringBuffer(), serr = new StringBuffer()
+def proc = '[INSERT COMMAND]'.execute()
+proc.consumeProcessOutput(sout, serr)
+proc.waitForOrKill(1000)
+println "out> $sout err> $serr"
+```
+- If you don't have admin access but could add or edit build steps in the
+build configuration. Add a build step, add "Execute Windows Batch Command" and enter:
+```powershell –c <command>```
+- Again, you could download and execute scripts, run encoded scripts and
+more.
