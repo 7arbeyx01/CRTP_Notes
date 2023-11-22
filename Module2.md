@@ -7,7 +7,7 @@ or make spilke ☣️ Like the picture in the below <br>
 > U can list the session and logged on users on the machines if you enumrate windows server less than 2019 if u a membership of domain admin group, but u will leave event 4624 and 4634 on all machines.<br>
 > when u use paramter like check access on this case the request not send for all machines, it's just send to the high level machines like servers to check.<br>
 
-***Privilege Escalation***
+# Privilege Escalation
 - In an AD environment, there are multiple scenarios which lead to privilege escalation. We had a look at the following
   - Hunting for Local Admin access on other machines
   - Hunting for high privilege domain accounts (like a Domain Administrator)
@@ -25,7 +25,7 @@ We can use below tools for complete coverage<br>
 - PowerUp: https://github.com/PowerShellMafia/PowerSploit/tree/master/Privesc
 - Privesc: https://github.com/enjoiz/Privesc
 
-***Services Issues using PowerUp***<br>
+# Services Issues using PowerUp<br>
 We have Three types of service issues:<br>
 1- Get services with unquoted paths and a space in their name.<br>
 ```Get-ServiceUnquoted -Verbose```<br>
@@ -40,7 +40,7 @@ We have Three types of service issues:<br>
 ```Get-ModifiableService -Verbose```<br>
 
 
-***Feature Abuse***
+# Feature Abuse
 - What we have been doing up to now (and will keep doing further in the class) is relying on features abuse.
 - Features abuse are awesome as there are seldom patches for them and they are not the focus of security teams!
 - One of my favorite features abuse is targeting enterprise applications which are not built keeping security in mind.
@@ -69,7 +69,7 @@ more.
 
 > Note :- Auto Logon feature its store the username and password on the registery so anyone can read it.
 
-***Domain Enumeration - BloodHound***
+# Domain Enumeration - BloodHound
 > BloodHound have two part the collector 'sharphond .ps1' that running to check the all of AD and give u file u open it in the second part called GUI.<br>
 > The SharpHound toolset is specifically designed to collect data within an Active Directory <br>
 > GUI draw to you a graph from the file that collect by the collectors.<br>
@@ -87,7 +87,7 @@ or<br>
 - To avoid detections like ATA
 ```Invoke-BloodHound -CollectionMethod All -ExcludeDC```
 
-***Lateral Movement - PowerShell Remoting***
+# Lateral Movement - PowerShell Remoting
 - Think of PowerShell Remoting (PSRemoting) as psexec on steroids but much more silent and super fast!
 - PSRemoting uses Windows Remote Management (WinRM) which is Microsoft's implementation of WS-Management.
 - Enabled by default on Server 2012 onwards with a firewall exception.
@@ -116,28 +116,48 @@ or<br>
 - The best thing in PowerShell for passing the hashes, using credentials and executing commands on multiple remote computers.
 - Use ```–Credential``` parameter to pass username/password.
 
-***PowerShell Remoting - Tradecraft***
+# PowerShell Remoting - Tradecraft
 - PowerShell remoting supports the system-wide transcripts and deep script block logging.
 - We can use winrs in place of PSRemoting to evade the logging (and still reap the benefit of 5985 allowed between hosts):
 ```winrs -remote:server1 -u:server1\administrator -p:Pass@1234 hostname```<br>
 - We can also use winrm.vbs and COM objects of WSMan COM object -https://github.com/bohops/WSMan-WinRM
 
-***Lateral Movement - Invoke-Mimikatz***
+# Lateral Movement - Invoke-Mimikatz
 - Mimikatz can be used to dump credentials, tickets, and many more interesting attacks!
 - Invoke-Mimikatz, is a PowerShell port of Mimikatz. Using the code from ReflectivePEInjection, mimikatz is loaded reflectively into the memory.
   All the functions of mimikatz could be used from this script.
 - The script needs administrative privileges for dumping credentials from local machine. Many attacks need specific privileges which are covered
   while discussing that attack.
 
-***Lateral Movement - OverPass-The-Hash***
+# Lateral Movement - OverPass-The-Hash
 - Over Pass the hash (OPTH) generate tokens from hashes or keys.
 - Below doesn't need elevation.<br>
 ```Rubeus.exe asktgt /user:administrator /rc4:<ntlmhash>/ptt```
 - Below command needs elevation.<br>
 ```Rubeus.exe asktgt /user:administrator/aes256:<aes256keys> /opsec/createnetonly:C:\Windows\System32\cmd.exe /show /ptt```
 
-***Lateral Movement - DCSync***
+# Lateral Movement - DCSync
 - To extract credentials from the DC without code execution on it, we can use DCSync.
 - To use the DCSync feature for getting krbtgt hash execute the below command with DA privileges for us domain:<br>
 ```Invoke-Mimikatz -Command '"lsadump::dcsync/user:us\krbtgt"'SafetyKatz.exe "lsadump::dcsync /user:us\krbtgt" "exit"```
 - By default, Domain Admins privileges are required to run DCSync.
+
+# Offensive .NET - Introduction
+- Currently, .NET lacks some of the security features implemented in System.Management.Automation.dll.
+- Because of this, many Red teams have included .NET in their tradecraft.
+- There are many open source Offensive .NET tools and we will use the ones that fit our attack methodology.
+
+ # Offensive .NET - Tradecraft
+- When using .NET (or any other compiled language) there are some challenges
+  - Detection by countermeasures like AV, EDR etc.
+  - Delivery of the payload (Recall PowerShell's sweet download-execute cradles)
+  - Detection by logging like process creation logging, command line logging etc.
+- We will try and address the AV detection and delivery of the payload as and when required during the class ;)
+- You are on your own when the binaries that we share start getting detected by Windows Defender!
+
+# Offensive .NET - Tradecraft - AV bypass
+- We will focus mostly on bypass of signature based detection by Windows Defender.
+- For that, we can use techniques like Obfuscation, String Manipulation etc.
+- We can use DefenderCheck (https://github.com/matterpreter/DefenderCheck) to identify code and strings from a binary that Windows Defender may flag.
+- This helps us in deciding on modifying the source code and minimal obfuscation.
+
