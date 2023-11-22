@@ -52,6 +52,7 @@ We have Three types of service issues:<br>
 - Apart from numerous plugins, there are two ways of executing commands on a Jenkins Master.
 - If you have Admin access (default installation before 2.x), go to ```http://<jenkins_server>/script```
 - In the script console, Groovy scripts could be executed.
+>Groovy is a dynamic, object-oriented programming language for the Java Virtual Machine (JVM). It is designed to be concise, readable, and expressive, with syntax and features inspired by languages like Java, Python, and Ruby. Groovy scripts are programs or scripts written in the Groovy programming language.
 ```
 def sout = new StringBuffer(), serr = new StringBuffer()
 def proc = '[INSERT COMMAND]'.execute()
@@ -66,3 +67,18 @@ build configuration. Add a build step, add "Execute Windows Batch Command" and e
 more.
 
 > Note :- Auto Logon feature its store the username and password on the registery so anyone can read it.
+
+***Domain Enumeration - BloodHound***
+- Provides GUI for AD entities and relationships for the data collected by its ingestors.
+- Uses Graph Theory for providing the capability of mapping shortest path for interesting things like Domain Admins.
+https://github.com/BloodHoundAD/BloodHound
+- There are built-in queries for frequently used actions.
+- Also supports custom Cypher queries.
+**Supply data to BloodHound:**<br>
+```. C:\AD\Tools\BloodHound-master\Collectors\SharpHound.ps1```<br>
+```Invoke-BloodHound -CollectionMethod All```<br>
+or<br>
+```SharpHound.exe```
+- The generated archive can be uploaded to the BloodHound application.
+- To avoid detections like ATA
+```Invoke-BloodHound -CollectionMethod All -ExcludeDC```
