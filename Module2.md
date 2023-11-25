@@ -181,5 +181,9 @@ and then offline brute-forcing the ticket to obtain the service account's plaint
 
 >xcopy: is a command-line utility in Microsoft Windows used for copying files and directories from one location to another. The name "xcopy" stands for "extended copy," and it is an enhanced version of the standard copy command in Windows.<br>
 
->If executable download another executable the Windows Defender can catch this behavior so we can avoid that by using port forwarding by netsh after $null variable.<br>
+>If executable download another executable the Windows Defender can catch this behavior so we can avoid that by using port forwarding to map it to local address by netsh after $null variable.<br>
+
+![image](https://github.com/7arbeyx01/CRTP_Notes/assets/18347638/92469281-fe8e-42b4-b070-164716d77a44)
+
 >netsh is a command-line utility in Microsoft Windows that allows users to configure and display various network-related settings. The term "netsh" stands for "network shell," and it provides a scripting interface to configure, monitor, and troubleshoot network components.
+
