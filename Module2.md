@@ -266,6 +266,7 @@ schtasks /Run /S dcorp-dc.dollarcorp.moneycorp.local /TN
 >Skeleton Key Technique:<br>
 >The Skeleton Key attack involves injecting a "skeleton key" into a Windows domain controller. This skeleton key allows the attacker to bypass normal authentication
 >processes and authenticate as any user without knowing their password.
+>The idea is u inject some code in the Local Security Authority Server Service (LSASS)
 - Skeleton key is a persistence technique where it is possible to patch a Domain Controller (lsass process) so that it allows access as any user with a single password.
 - The attack was discovered by Dell Secureworks used in a malware named the Skeleton Key malware.
 - All the publicly known methods are NOT persistent across reboots.
