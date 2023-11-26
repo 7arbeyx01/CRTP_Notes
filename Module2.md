@@ -187,3 +187,19 @@ and then offline brute-forcing the ticket to obtain the service account's plaint
 
 >netsh is a command-line utility in Microsoft Windows that allows users to configure and display various network-related settings. The term "netsh" stands for "network shell," and it provides a scripting interface to configure, monitor, and troubleshoot network components.
 
+>When u find the user ceredentials is clear text like that ```Session: Service from 0``` thats mean this user is a used to run service and ```0``` means that is use to run service. <br>
+
+>NTLM is devided to NT Hash + LM Hash.<br>
+>```NT Hash```: is the hash of the password.<br>
+>```LM Hash```: is the user password in upper case and divided to 7 part then calculate the hash of it.<br>
+
+# Active Directory Domain Dominance
+- There is much more to Active Directory than "just" the Domain Admin.
+- Once we have DA privileges new avenues of persistence, escalation to EA and attacks across trust open up!
+- Let's have a look at abusing trust within domain, across domains and forests and various attacks on Kerberos.
+
+# About Kerberos
+- Kerberos is the basis of authentication in a Windows Active Directory environment.
+- Clients (programs on behalf of a user) need to obtain tickets from Key Distribution Center (KDC) which is a service running on the domain
+  controller. These tickets represent the client's credentials.!
+- Therefore, Kerberos is understandably a very interesting target of abuse!
