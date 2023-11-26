@@ -323,3 +323,13 @@ dc /user:Administrator
 /run:powershell.exe"'
 ls \\dcorp-dc\C$
 ```
+> From powershell 5.1 it gives you not all languages just gives you constraint language, you can check it with this command.<br>
+>```$ExecutionContext.SessionState.LanguageMode```
+```
+- FullLanguage Mode:
+  - In FullLanguage mode, all language elements are available. This includes cmdlets, functions, workflows, aliases, variables, and operators.
+- ConstrainedLanguage Mode:
+  - In ConstrainedLanguage mode, the language is restricted to a subset of PowerShell features to enhance security. This mode is often used in environments where scripts need to be more tightly controlled.
+```
+
+> AppLocker is Powerless against Administrators.<br>
