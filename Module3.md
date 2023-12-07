@@ -1,4 +1,13 @@
 # Persistence – Custom SSP
+```
+Security Support Provider (SSP) typically refers to a software module in Microsoft Windows operating systems. 
+SSPs play a crucial role in the authentication and security of Windows systems. They are responsible for 
+implementing various security protocols and handling authentication mechanisms.
+
+Examples of SSPs in Windows include NTLM (NT LAN Manager), Kerberos, and Security Support Provider Interface (SSPI).
+ Each SSP provides a specific set of security services, and the choice of SSP can impact how authentication and 
+security are handled in a Windows environment.
+```
 - A Security Support Provider (SSP) is a DLL which provides ways for an application to obtain an authenticated connection. Some SSP Packages by Microsoft are
   - NTLM
   - Kerberos
